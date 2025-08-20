@@ -1,0 +1,79 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+<body>
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <form action="/listings/search" method="GET" class="search-form">
+      <input
+        type="text"
+        name="q"
+        placeholder="Search listings..."
+        class="search-input"
+      />
+      <button type="submit" class="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- Filter Section -->
+  <div id="filter">
+    <div class="filter">
+      <i class="fa-solid fa-fire"></i>
+      <p>Trending</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-star"></i>
+      <p>Top Rated</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-city"></i>
+      <p>City Stays</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-mountain-sun"></i>
+      <p>Nature</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-umbrella-beach"></i>
+      <p>Beachfront</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-gem"></i>
+      <p>Luxury</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-wallet"></i>
+      <p>Budget</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-children"></i>
+      <p>Family Friendly</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-dog"></i>
+      <p>Pet Friendly</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-tree"></i>
+      <p>Unique Stays</p>
+    </div>
+  </div>
+
+  <div class="listing-container">
+    <% for (let listing of all_listing) { %>
+    <a href="/listings/<%= listing._id %>" class="card-link">
+      <div class="card">
+        <img src="<%= listing.image.url %>" alt="Listing Image" />
+        <div class="card-body">
+          <h2><%= listing.title %></h2>
+          <h5><%= listing.description %></h5>
+          <p>City: <%= listing.location %>, <%= listing.country %></p>
+          <p><strong>₹<%= listing.price %></strong> /nights</p>
+        </div>
+      </div>
+    </a>
+
+    <% } %>
+  </div>
+</body>

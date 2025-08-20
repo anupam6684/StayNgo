@@ -1,0 +1,145 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+<body>
+  <div class="details-container">
+    <div class="details-header">
+      <h2><%= listingOne.title %></h2>
+    </div>
+
+    <div class="details-content">
+      <img
+        src="<%= listingOne.image.url %>"
+        alt="Listing Image"
+        class="details-image"
+      />
+
+      <ul class="details-info">
+        <li>
+          <strong><i class="fa-regular fa-user"></i></strong> <%=
+          listingOne.owner.username %>
+        </li>
+        <li><strong>Description:</strong> <%= listingOne.description %></li>
+        <li>
+          <strong>Price:</strong> ₹<%= listingOne.price.toLocaleString("en-IN")
+          %>
+        </li>
+        <li><strong>Location:</strong> <%= listingOne.location %></li>
+        <li><strong>Country:</strong> <%= listingOne.country %></li>
+      </ul>
+      <% if (currUser && currUser._id.equals(listingOne.owner._id)) { %>
+      <div class="details-actions">
+        <a href="/listings/<%= listingOne._id %>/edit" class="btn edit-btn"
+          ><i class="fa-solid fa-pen-to-square"></i>  Edit</a
+        >
+
+        <form
+          method="post"
+          action="/listings/<%= listingOne._id %>?_method=DELETE"
+          class="delete-form"
+        >
+          <button type="submit" class="btn delete-btn"><i class="fa-solid fa-trash"></i>Delete</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <div class="review-section">
+    <% if(currUser){ %>
+    <h3>Leave a Review</h3>
+    <form
+      action="/listings/<%= listingOne._id %>/reviews"
+      method="POST"
+      class="review-form"
+    >
+      <label for="rating">Rating:</label>
+      <fieldset class="starability-slot">
+        <input
+          type="radio"
+          id="no-rate"
+          class="input-no-rate"
+          name="review[rating]"
+          value="1"
+          checked
+          aria-label="No rating."
+        />
+        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+
+      <div class="form-group">
+        <label for="comment">Your Review:</label>
+        <textarea
+          id="comment"
+          name="review[comment]"
+          rows="4"
+          placeholder="Write your review..."
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn submit-btn">Submit Review</button>
+    </form>
+    <% } %>
+    <h4>All Reviews</h4>
+    <div class="reviews-container">
+      <% for (let review of listingOne.reviews) { %>
+      <div class="review-card">
+        <div class="review-rating">
+          <br />
+          <h3>
+            <i class="fa-regular fa-user"></i>
+            <%= review.created_by.username %>
+          </h3>
+          <p class="starability-result" data-rating="<%= review.rating%>">
+            Rated:<%= review.rating%>stars
+          </p>
+        </div>
+        "<%= review.comment %>"
+        <span class="review-date">
+          <%= new Date(review.created_at).toLocaleDateString() %>
+        </span>
+        <form
+          method="post"
+          action="/listings/<%= listingOne._id %>/reviews/<%=review._id %>?_method=DELETE"
+        >
+          <button>Delete</button>
+        </form>
+      </div>
+
+      <% } %>
+    </div>
+  <!-- </div>
+ 
+
+     
+    <h2>Where you’ll be</h2>
+    <div id="map"></div>
+    <div>
+      <script>
+        // TO MAKE THE MAP APPEAR YOU MUST
+        // ADD YOUR ACCESS TOKEN FROM
+        // https://account.mapbox.com
+
+        let mapToken = "<process.env.MAP_TOKEN%>";
+        mapboxgl.accessToken = mapToken;
+        const map = new mapboxgl.Map({
+          container: "map", // container ID
+          center: [-74.5, 40], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+          zoom: 9, // starting zoom
+        });
+      </script>
+    </div>
+  </div> -->
+
+
+
+
+</body>

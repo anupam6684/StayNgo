@@ -1,0 +1,45 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a
+        href="/listings"
+        style="text-decoration-line: none; display: flex; align-items: center"
+      >
+        <img
+          src="/images/stayNGo.png"
+          alt="StayNgo Logo"
+          style="height: 40px; margin-right: 9px"
+        />
+        <span style="color: white">StayNgo</span>
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a href="/listings">Home</a></li>
+      <li><a href="/listings/new"> Add Your Home </a></li>
+      <% if (!currUser) { %>
+      <li>
+        <div>
+          <a href="/signup"
+            ><b>SignUp</b> <i class="fa-solid fa-user-plus"></i
+          ></a>
+        </div>
+      </li>
+      <li>
+        <a href="/login"
+          ><b>Login</b> <i class="fa-solid fa-right-to-bracket"></i
+        ></a>
+      </li>
+      <% } else { %>
+      <li>
+        <a href="/logout"
+          ><b>Logout</b> <i class="fa-solid fa-arrow-right-from-bracket"></i
+        ></a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>

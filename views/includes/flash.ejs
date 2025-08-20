@@ -1,0 +1,17 @@
+<% if (success && success.length > 0) { %> <% success.forEach(msg => { %>
+<div class="flash-message flash-success"><%= msg %></div>
+<% }) %> <% } %> <% if (error && error.length > 0) { %> <% error.forEach(msg =>
+{ %>
+<div class="flash-message flash-error"><%= msg %></div>
+<% }) %> <% } %>
+
+<script>
+  // Auto-hide after 3 seconds
+  setTimeout(() => {
+    document.querySelectorAll(".flash-message").forEach((msg) => {
+      msg.style.transition = "opacity 0.5s ease";
+      msg.style.opacity = "0";
+      setTimeout(() => msg.remove(), 500);
+    });
+  }, 3000);
+</script>
