@@ -87,7 +87,7 @@ app.use(flash());
 
 // root route (should be after session & flash)
 app.get("/", (req, res) => {
-  res.send("this is a root path ");
+  res.redirect("/listings");
 });
 
 // user set up  for authentication
