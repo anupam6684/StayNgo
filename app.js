@@ -38,8 +38,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
-const DB_Url = process.env.MONGO_URL;
+const MONGO_URL = "mongodb://127.0.0.1:27017/stayngo";
 
 main()
   .then(() => {
@@ -50,14 +49,14 @@ main()
   });
 // connect to DB
 async function main() {
-  await mongoose.connect(process.env.MONGO_URL, {
+  await mongoose.connect(MONGO_URL, {
     serverSelectionTimeoutMS: 10000, // 10s timeout
   });
   console.log("✅ Connected to MongoDB Atlas");
 }
 // session store
 const store = MongoStore.create({
-  mongoUrl: DB_Url,
+  mongoUrl: MONGO_URL,
   crypto: {
     secret: process.env.SECRET,
   },

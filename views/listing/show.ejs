@@ -13,19 +13,21 @@
         class="details-image"
       />
 
-      <ul class="details-info">
-        <li>
-          <strong><i class="fa-regular fa-user"></i></strong> <%=
-          listingOne.owner.username %>
-        </li>
-        <li><strong>Description:</strong> <%= listingOne.description %></li>
-        <li>
-          <strong>Price:</strong> ₹<%= listingOne.price.toLocaleString("en-IN")
-          %>
-        </li>
-        <li><strong>Location:</strong> <%= listingOne.location %></li>
-        <li><strong>Country:</strong> <%= listingOne.country %></li>
-      </ul>
+     <ul class="details-info">
+  <li class="owner-info">
+    <img 
+      src="<%= listingOne.owner.image?.url || 'https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg' %>" 
+      alt="Owner Profile Picture" 
+      class="owner-img"
+    />
+    <span class="owner-username"><%= listingOne.owner.username %></span>
+  </li>
+  <li><strong>Description:</strong> <%= listingOne.description %></li>
+  <li><strong>Price:</strong> ₹<%= listingOne.price.toLocaleString("en-IN") %></li>
+  <li><strong>Location:</strong> <%= listingOne.location %></li>
+  <li><strong>Country:</strong> <%= listingOne.country %></li>
+</ul>
+
       <% if (currUser && currUser._id.equals(listingOne.owner._id)) { %>
       <div class="details-actions">
         <a href="/listings/<%= listingOne._id %>/edit" class="btn edit-btn"
@@ -37,7 +39,7 @@
           action="/listings/<%= listingOne._id %>?_method=DELETE"
           class="delete-form"
         >
-          <button type="submit" class="btn delete-btn"><i class="fa-solid fa-trash"></i>Delete</button>
+          <button type="submit" class="btn delete-btn"><i class="fa-solid fa-trash"></i> Delete</button>
         </form>
       </div>
       <% } %>
@@ -95,8 +97,14 @@
         <div class="review-rating">
           <br />
           <h3>
-            <i class="fa-regular fa-user"></i>
-            <%= review.created_by.username %>
+            <li class="owner-info">
+    <img 
+      src="<%= listingOne.owner.image?.url || 'https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg' %>" 
+      alt="Owner Profile Picture" 
+      class="owner-img"
+    />
+    <span class="owner-username"><%= listingOne.owner.username %></span>
+  </li>
           </h3>
           <p class="starability-result" data-rating="<%= review.rating%>">
             Rated:<%= review.rating%>stars
@@ -110,7 +118,7 @@
           method="post"
           action="/listings/<%= listingOne._id %>/reviews/<%=review._id %>?_method=DELETE"
         >
-          <button>Delete</button>
+          <button class="btn delete-btn" ><i class="fa-solid fa-trash"></i> Delete</button>
         </form>
       </div>
 

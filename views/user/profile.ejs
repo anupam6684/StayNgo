@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="profile-container">
+  <div class="profile-card">
+    <!-- Profile Picture -->
+    <div class="profile-pic">
+      <img src="<%= originalImageUrl||
+      "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
+      %>" alt="Profile Picture" />
+    </div>
+
+    <!-- User Info -->
+
+    <h2>Username :<%= currUser.username %></h2>
+    <p>Email :<%= currUser.email %></p>
+
+    <!-- Buttons -->
+    <div class="profile-actions">
+      <a href="/user/profile/edit" class="btn">Edit Profile</a>
+      <a href="/user/profile/password" class="btn btn-secondary"
+        >Change Password</a
+      >
+    </div>
+
+    <!-- Logout -->
+    <div class="logout-btn">
+      <a href="/logout" class="btn btn-danger">Log Out</a>
+    </div>
+  </div>
+</div>

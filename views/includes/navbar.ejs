@@ -34,10 +34,17 @@
         ></a>
       </li>
       <% } else { %>
-      <li>
-        <a href="/logout"
-          ><b>Logout</b> <i class="fa-solid fa-arrow-right-from-bracket"></i
-        ></a>
+      <!-- If logged in -->
+
+      <li class="profile-menu">
+        <a href="/user/profile" class="navbar-profile-link">
+          <img
+            src="<%= currUser.image?.url || 'https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg' %>"
+            alt="Profile Picture"
+            class="navbar-profile-img"
+          />
+          <span><%= currUser.username %></span>
+        </a>
       </li>
       <% } %>
     </ul>

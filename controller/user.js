@@ -49,3 +49,102 @@ module.exports.userlogout = (req, res, next) => {
     res.redirect("/listings");
   });
 };
+
+//show profile
+module.exports.profile = (req, res) => {
+  let currUser = req.user;
+  let originalImageUrl = currUser.image.url;
+  originalImageUrl = originalImageUrl.replace(
+    "/upload",
+    "/upload/ar_1.0,c_thumb,g_face,w_0.7/r_max/co_skyblue,e_outline/co_lightgray,e_shadow,x_5,y_8"
+  );
+  res.render("user/profile.ejs", { currUser, originalImageUrl });
+};
+
+//profile edit-form
+
+module.exports.profileEditForm = (req, res) => {
+  let crrUser = req.user;
+  let originalImageUrl = crrUser.image.url;
+  originalImageUrl = originalImageUrl.replace(
+    "/upload",
+    "/upload/ar_1.0,c_thumb,g_face,w_0.7/r_max/co_skyblue,e_outline/co_lightgray,e_shadow,x_5,y_8"
+  );
+  res.render("user/editprofile.ejs", { crrUser, originalImageUrl });
+};
+
+//profile edit
+module.exports.profileEdit = async (req, res) => {
+  try {
+    const { username, email } = req.body;
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      req.flash("error", "User not found!");
+      return res.redirect("/user/profile");
+    }
+
+    // Update username & email
+    user.username = username;
+    user.email = email;
+
+    // Handle profile photo upload (from multer)
+    if (req.file) {
+      user.image = {
+        url: req.file.path, // path to uploaded file
+        filename: req.file.filename,
+      };
+    }
+
+    await user.save();
+
+    // Refresh session to keep user logged in
+    req.login(user, (err) => {
+      if (err) {
+        console.error(err);
+        req.flash("error", "Something went wrong with session update.");
+        return res.redirect("/user/profile");
+      }
+      req.flash("success", "Profile updated successfully!");
+      res.redirect("/user/profile");
+    });
+  } catch (err) {
+    console.error(err);
+    req.flash("error", "Something went wrong, please try again.");
+    res.redirect("/user/profile/edit");
+  }
+};
+
+//user change password -form
+module.exports.ChangePasswordForm = (req, res) => {
+  res.render("user/password.ejs");
+};
+// Change Password
+
+module.exports.ChangePassword = async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+
+    // passport-local-mongoose change password
+    await req.user.changePassword(oldPassword, newPassword);
+
+    // refresh login session so user stays logged in
+    req.login(req.user, (err) => {
+      if (err) {
+        console.error(err);
+        req.flash(
+          "error",
+          "Password changed but session refresh failed. Please log in again."
+        );
+        return res.redirect("/login");
+      }
+
+      req.flash("success", "Password updated successfully!");
+      res.redirect("/user/profile");
+    });
+  } catch (err) {
+    console.error(err);
+    req.flash("error", "Invalid old password or something went wrong.");
+    res.redirect("/user/profile/password");
+  }
+};

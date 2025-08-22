@@ -671,3 +671,337 @@ h3 {
 .search-btn i {
   font-size: 16px;
 }
+
+/* profile */
+/* Profile Page Container */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Card */
+.profile-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Profile Pic */
+.profile-pic img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #00bcd4;
+}
+
+/* Username */
+.profile-card h2 {
+  margin: 10px 0 5px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Email */
+.profile-card p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Action Buttons */
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.profile-actions .btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: #00bcd4;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.profile-actions .btn:hover {
+  background: #0097a7;
+}
+
+.profile-actions .btn-secondary {
+  background: #555;
+}
+
+.profile-actions .btn-secondary:hover {
+  background: #333;
+}
+
+/* Logout Button */
+.logout-btn {
+  margin-top: 20px;
+}
+
+.btn-danger {
+  background: #e53935;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background: #c62828;
+}
+
+/* edit profile */
+/* Edit Profile Page */
+.edit-profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.edit-profile-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.edit-profile-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form Styling */
+.edit-profile-form .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-profile-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.edit-profile-form input[type="text"],
+.edit-profile-form input[type="email"],
+.edit-profile-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Profile Picture Preview */
+.profile-preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.profile-preview img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00bcd4;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.btn-edit {
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: #00bcd4;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-edit:hover {
+  background: #0097a7;
+}
+
+.btn-secondary-2 {
+  background: #555;
+}
+
+.btn-secondary-2:hover {
+  background: #333;
+}
+
+/* Password Page Specific */
+#password-page {
+  background: #f9fafb;
+}
+
+.card-password {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 420px;
+  width: 100%;
+}
+
+.title-password {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+.flash-password {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+
+.input-password {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+}
+
+.input-password:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+.btn-password {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.btn-password:hover {
+  background: #1d4ed8;
+}
+
+.back-link-password {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.back-link-password:hover {
+  text-decoration: underline;
+}
+
+/* Full-page center wrapper */
+.page-center {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center; /* vertical center */
+  min-height: 100vh; /* full viewport height */
+  background: #f3f4f6; /* light gray background */
+}
+
+/* wrapper for eye icon */
+.password-wrapper {
+  position: relative;
+}
+
+.input-password {
+  width: 100%;
+  padding: 0.6rem 2.5rem 0.6rem 0.6rem; /* extra padding on right for icon */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.1rem;
+}
+
+/* navbar user photo */
+/* Navbar profile link */
+/* Navigation Links Container */
+.nav-links {
+  display: flex; /* horizontal layout */
+  align-items: center; /* vertical alignment of items */
+  gap: 15px; /* space between links */
+  list-style: none; /* remove bullets */
+  margin: 0;
+  padding: 0;
+}
+
+/* Each profile menu item */
+.profile-menu {
+  display: flex; /* ensure the link itself can flex */
+  align-items: center;
+}
+
+/* Navbar profile link */
+.navbar-profile-link {
+  display: flex; /* align image and username horizontally */
+  align-items: center; /* vertically center image and text */
+  gap: 5px; /* spacing between image and username */
+  text-decoration: none; /* remove underline */
+  color: inherit;
+}
+
+/* Navbar profile image */
+.navbar-profile-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* show .ejs user photo */
+
+.owner-info {
+  display: flex; /* align image and username horizontally */
+  align-items: center; /* vertical alignment */
+  gap: 10px; /* spacing between image and username */
+}
+
+.owner-img {
+  width: 40px; /* size of profile image */
+  height: 40px;
+  border-radius: 50%; /* makes it circular */
+  object-fit: cover;
+}
+
+.owner-username {
+  font-weight: bold;
+}
