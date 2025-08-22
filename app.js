@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-const MONGO_URL = "mongodb://127.0.0.1:27017/stayngo";
+const MONGO_URL = process.env.MONGO_URL;
 
 main()
   .then(() => {
