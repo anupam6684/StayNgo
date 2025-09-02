@@ -52,7 +52,7 @@ module.exports.showlistingOne = async (req, res) => {
       populate: { path: "created_by" }, // ✅ if reviews have a "created_by" field
     })
     .populate("owner");
-  console.log(listingOne);
+ 
 
   if (!listingOne) {
     req.flash("error", "Listing doesn't exist");
